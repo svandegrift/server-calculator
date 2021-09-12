@@ -9,6 +9,17 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/bmi', (req,res) =>{
+    res.sendFile(__dirname + '/bmi.html')
+})
+
+app.post('/bmi', (req, res)=>{
+    var weight = Number(req.body.number1)
+    var height = Number(req.body.number2)
+    var bmi = Math.floor(weight/(height * height))
+    res.send(`Your BMI is ${bmi}`)
+})
+
 app.post('/', (req,res) =>{
     var symbol = eval(req.body.functions)
     var number1 = Number(req.body.number1)
